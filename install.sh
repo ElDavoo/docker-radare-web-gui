@@ -1,13 +1,6 @@
 #!/bin/sh
 
-
-## Install Required Packages
-install_clean \
-    build-essential \
-    git \
-    npm \
-    python3 \
-    python3-pip
+. /opt/app/venv/bin/activate 
 
 ## Install Radare
 git clone --depth=1 https://github.com/radare/radare2.git
@@ -45,20 +38,5 @@ cd ..
 ## Install Server
 git clone --depth=1 https://github.com/fkie-cad/fact_radare_viewer.git
 pip3 install -r fact_radare_viewer/requirements.txt
-
-
-## Install Python Plugin
-pip3 install setuptools wheel
-pip3 install r2pipe
-
-
-## Remove Redundant Packages
-apt-get remove -y \
-    build-essential \
-    git \
-    npm \
-    python3-pip
-apt-get autoremove -y
-
 
 exit 0
